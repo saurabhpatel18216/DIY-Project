@@ -1,5 +1,5 @@
-// C++ code//
-#include
+// C++ code
+//
 int sensread_i = 0;
 
 int sensread_f = 0;
@@ -41,26 +41,26 @@ void loop()
   sound_int = digitalRead(7);
   Serial.println(sound_int);
   Serial.println(sensread_f - sensread_i);
-  if (sensread_f - sensread_i > 20 || sensread_f - sensread_i < -20) {
+  if (sensread_f - sensread_i > 30 || sensread_f - sensread_i < -30) {
     if (sound_int == HIGH) {
       Serial.println("PARTY");
       for (counter = 0; counter < 10; ++counter) {
         digitalWrite(4, HIGH);
         digitalWrite(5, LOW);
         digitalWrite(6, LOW);
-        delay(100); // Wait for 100 millisecond(s)
+        delay(50); // Wait for 100 millisecond(s)
         digitalWrite(4, LOW);
         digitalWrite(5, HIGH);
         digitalWrite(6, LOW);
-        delay(100); // Wait for 100 millisecond(s)
+        delay(50); // Wait for 100 millisecond(s)
         digitalWrite(4, LOW);
         digitalWrite(5, LOW);
         digitalWrite(6, HIGH);
-        delay(100); // Wait for 100 millisecond(s)
+        delay(50); // Wait for 100 millisecond(s)
       }
     }
   } else {
-    if (sensread_f - sensread_i > 5 || sensread_f - sensread_i < -5) {
+    if (sensread_f - sensread_i > 10 || sensread_f - sensread_i < -10) {
       if (sound_int == HIGH) {
         Serial.println("SPEECH");
         digitalWrite(4, LOW);
@@ -75,8 +75,8 @@ void loop()
         delay(3000); // Wait for 30000 millisecond(s)
       }
     } else {
-      if (sensread_f - sensread_i > 0 || sensread_f - sensread_i < 0) {
-        if (sound_int == LOW) {
+      if (sensread_f - sensread_i > 5 || sensread_f - sensread_i < -5) {
+        if (sound_int == HIGH) {
           Serial.println("MEETING");
           digitalWrite(4, HIGH);
           digitalWrite(5, LOW);
